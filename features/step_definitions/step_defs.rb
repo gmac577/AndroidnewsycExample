@@ -58,7 +58,7 @@ Given(/^I touch the story$/) do
 end
 ################################
 ########                       #
-########    02-Menu            #
+########    04-Menu            #
 ########                       #
 ################################
 Given(/^I touch the (Front Page|Ask|Best|Active|New|Submit|Settings|About|Login) button$/) do |choice|
@@ -67,15 +67,22 @@ end
 
 ################################
 ########                       #
-########    03-Edit Profile    #
+########    02-Search          #
 ########                       #
 ################################
-Given(/^I edit the member profile using "(.*?)" data$/) do |data|
-  on(EditProfilePage).edit_profile(data)
+Given(/^I touch the magnifying glass icon$/) do
+  page(SearchPage).touch_glass
 end
-Then(/^I select Update on the Edit Profile screen$/) do 
-  on(EditProfilePage).update.click
+Given(/^I select Update on the Edit Profile screen$/) do 
+  page(SearchPage).update.click
 end
-
-
+Given(/^I enter "(.*?)" into the Search field$/) do |text|
+ page(SearchPage).search_criteria(text)
+end
+Given(/^I successfully enter search criteria$/) do
+  page(SearchPage).searcher
+end
+Given(/^I successfully search$/) do
+  page(SearchPage).tiny_search
+end
 ##################################
