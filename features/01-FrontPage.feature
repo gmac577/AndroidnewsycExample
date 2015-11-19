@@ -13,7 +13,7 @@ Scenario: Choosing the Menu
 Scenario: Refreshing the page
 	When I touch Refresh on the tab bar
 	Then I am on the Front Page screen
-
+@con
 Scenario: Changing the screen contrast
 	When I touch Stack on the tab bar
 	And I see the screen contrast change

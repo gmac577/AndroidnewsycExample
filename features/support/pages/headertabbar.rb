@@ -17,6 +17,7 @@ class HeaderTabBarPage < Calabash::ABase
     @@ayemm = "-14277082"
     @@peeemm = "-1710619"
     @@mnutitle  = "* text:'Hacker News 2'"
+    @@term = "{'defaultColor'=>-14277082, 'stateful'=>false}"
     
 
 #--------------------------------------------
@@ -38,12 +39,22 @@ class HeaderTabBarPage < Calabash::ABase
     end
 
     def sun_screen
-        touch(@@nightmode)
-        sleep 3
-        touch(@@threedots)
-        puts 1
-        touch(@@daymode)
-        puts 2
+            colordef = query("fontText", :getTextColors) [1]
+            colordef = colordef.to_s
+
+        if colordef.include? @@ayemm then
+            puts "This is daymode"
+            touch(@@nightmode)
+            sleep 3
+            touch(@@threedots)
+            touch(@@daymode)
+        else
+            puts "This is nightmode"
+            touch(@@daymode)
+            sleep 3
+            touch(@@threedots)
+            touch(@@nightmode)
+        end
     end
 
     def text_adjust
