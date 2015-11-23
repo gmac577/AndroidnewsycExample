@@ -16,28 +16,18 @@ Scenario: Navigating to the story and back
 
 Scenario: Reading the Original Article in the in-app and Chrome browser
     When I choose the story I want to read
-    And I touch the Original Article icon
-    And I touch the Dancing Man Icon
-    And I touch Just once
-    And I touch the back button
-    And I touch the back button
+    And I navigate to the article
     Then I am on the Front Page screen
-@read
+
 Scenario: Sharing/Forwarding the story
     When I choose the story I want to read
-    And I touch the Forward Article icon
-    And I am on the Share story screen
-    And I touch the Article button
-    And I touch the HN Page button
-	And I scroll through the options
-	And I touch the X 
-	And I touch the Y icon
+    And I successfully share the story  
     Then I am on the Front Page screen
 
-
-
-    #And I see the Profile icon
-    #And I see the profile bar
-    #And I click the Points button
+@read
+Scenario: Looking at the poster's profile
+	When I choose the story I want to read
+    And I navigate to the poster's profile
+    Then I am on the Front Page screen
 
 

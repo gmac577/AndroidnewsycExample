@@ -20,8 +20,8 @@ Given(/^I enter "(.*?)" login credentials$/) do |type|
   	page(LoginPage).login_to_system(type)
 end
 
-Given(/^I see the alert message "(.*?)"$/) do |alert|
-  page(LoginPage).alerter(alert)
+Given(/^I see the alert message$/) do
+  page(LoginPage).alerter
 end
 
 Given(/^I do not see the Front Page screen$/) do
@@ -120,7 +120,25 @@ end
 Given(/^I am on the Share story screen$/) do
   page(StoryPage).title_check
 end
+Given(/^I see the (About user|Submissions|Threads) header$/) do |check|
+  page(StoryPage).view_header(check)
+end
 Given(/^I touch the Y icon$/) do
   page(StoryPage).y_touch
+end
+Given(/^I see the Profile icon$/) do
+  page(StoryPage).profile_touch
+end
+Given(/^I tap the (Submissions|Threads|About) button$/) do |check|
+  page(StoryPage).mnu_check(check)
+end
+Given(/^I navigate to the article$/) do
+  page(StoryPage).read_article
+end
+Given(/^I successfully share the story$/) do
+  page(StoryPage).share_story
+end
+Given(/^I navigate to the poster's profile$/) do
+  page(StoryPage).profile_look
 end
 ##################################

@@ -42,34 +42,39 @@ class LoginPage < Calabash::ABase
  def login_to_system(type)
  	 case type
         when "valid" then
-            puts "valid"
+            #puts "valid"
  			vname = @@validname
 	 		vpass = @@validpass
  	    when "invalid" then
- 			puts "invalid"
+ 			#puts "invalid"
  			vname = @@invalidname
  			vpass = @@invalidpass
  		when "blank" then
- 			puts "blank"
+ 			#puts "blank"
  			vname = @@blankname
  			vpass = @@blankpass
  		end
 	touch(@@username)
  	enter_text(@@username, vname)
  	sleep 2
- 	performAction('drag', 50, 50, 90, 70, 10)
+ 	perform_action('drag', 50, 50, 90, 70, 10)
  	touch(@@password)
  	enter_text(@@password, vpass)
  	sleep 2
- 	performAction('drag', 50, 50, 90, 70, 10)
+ 	perform_action('drag', 50, 50, 90, 70, 10)
  	touch(@@loginbtn)
 end
 
- 	def alerter(alert)
- 		if not alert.include? @@alerter
- 	  	fail
- 	end
-end
+ 	def alerter
+	sleep 2
+ 		@@message = query("* id:'message'", :text)
+ 		#puts @@message
+ 	  if @@message.include? @@alerter then
+ 	  		sleep 2
+ 	  else
+ 			fail
+  	  end
+	end
 
 	def athome
 		wait_for_elements_exist(@@title)

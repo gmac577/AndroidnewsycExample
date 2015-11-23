@@ -14,11 +14,11 @@ Scenario: Successful Login
 
 Scenario: Unsuccessful Login
   When I enter "invalid" login credentials
-  And I see the alert message "*Login failed. Please check your network connection, username, and password, then try again."
+  And I see the alert message
   Then I do not see the Front Page screen
 
 Scenario: Blank Login
   When I enter "blank" login credentials
-  And I see the alert message "*Login failed. Please check your network connection, username, and password, then try again."
+  And I see the alert message
   Then I do not see the Front Page screen
 
